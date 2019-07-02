@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.4)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    bcrypt (3.1.13)
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -246,6 +247,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
