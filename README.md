@@ -1,2 +1,41 @@
-# -events-go-rails-v2
-Events app with authentication in Ruby on Rails 6
+# Events Go App 1.0
+Events Go is an events registration app built with Ruby on Rails 6. It allows users to see which tech events are available and add their own tech events to the database. Users can see who's going to events and can sign up themselves.
+
+ **There is no authentication in the 1.0 version of the app**. This app demonstrates one-to-many model relationships between events and registrations.
+
+This app is meant to show Rails CRUD flexibility without using scaffolding.
+
+# Deloyed Application
+
+https://events-go-v1.herokuapp.com  
+(Deployed to Heroku, please wait 10 seconds to load).
+
+
+Video of Events App  (60 seconds):  
+(Insert YouTube Video)
+
+# Getting Started
+
+Clone Flix App Repository
+
+`git clone https://github.com/nikita-kazakov/events-go-rails-v1`
+
+Change terminal directory to _flix-rails-app_  
+`cd events-go-rails-v1`
+
+Bundle install required Ruby gems but without production gems.  
+`bundle install --without production`
+
+Run Rails migration to create database tables from schema.  
+`rails db:migrate`
+
+Run seeds.db to populate database with sample movies and reviews.  
+`rails db:seed`
+
+Run rails server  
+`rails server`
+
+Open the internet browser and navigate to URL below.  
+`http://localhost:3000`
+
+You’ll see the index page.

@@ -1,0 +1,20 @@
+ <div class="row">
+
+    <%@events.each do |event| %>
+
+    <div class="d-flex flex-column col-lg-4 mb-5">
+        <%= image_tag(event.image_file_name, class: "card-img-top")%>
+        <div class="d-flex justify-content-between">
+          <%=link_to event.name, event_path(event), class:"h2 text-decoration-none" %>
+          <h3><span class="badge badge-info"><%=price_view(event) %></span></h3>
+        </div>
+
+        <p class="mb-auto"><%=event.description %></p>
+        <small class="text-muted">In <%=event.location %> on <%=format_date(event)%> at <%=format_time(event)%></small>
+        <small class="text-muted"><%=event.spots_left %> spots remaining</small>
+
+    </div>
+
+    <%end %>
+
+  </div>

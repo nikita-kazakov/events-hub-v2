@@ -1,0 +1,35 @@
+
+
+  <h1>Registrations for <%=link_to @event.name, event_path(@event) %></h1>
+
+  <div class="row">
+
+
+      <%@registrations.each do |registration| %>
+      <div class="col-lg-4 mb-5">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <th scope="row">Name</th>
+            <td><%=registration.name %></td>
+          </tr>
+
+          <tr>
+            <th scope="row">Email</th>
+            <td><%=registration.email %></td>
+          </tr>
+
+          </tbody>
+        </table>
+        <%=link_to "Edit", edit_event_registration_path(@event, registration),class:"btn btn-primary" %>
+        <%=link_to "Delete", event_registration_path(@event, registration), method: :delete, data:{confirm: "Are you sure?"}, class:"btn btn-danger" %>
+      </div>
+    <% end %>
+
+
+
+  </div>
+
+
+
+
