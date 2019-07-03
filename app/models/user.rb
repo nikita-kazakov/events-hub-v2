@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :username, presence: true,
             format: /\A[A-Z0-9]+\z/i,
             uniqueness: { case_sensitive: false }
-  #Added validation for username.
-  #Test commits as errors are coming in.
+  #Error test again
 
 end
