@@ -1,22 +1,16 @@
 
 
-<%@registrations.each do |registration| %>
+
   <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Label</th>
-      <th scope="col">Value</th>
-    </tr>
-    </thead>
     <tbody>
     <tr>
       <th scope="row">Name</th>
-      <td><%=registration.name %></td>
+      <td><%=@registration.name %></td>
     </tr>
 
     <tr>
-      <th scope="row">Description</th>
-      <td><%=registration.email %></td>
+      <th scope="row">Email</th>
+      <td><%=@registration.email %></td>
     </tr>
 
     </tbody>

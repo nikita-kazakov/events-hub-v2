@@ -1,0 +1,43 @@
+<%=render 'shared/errors', object: @user%>
+
+
+<div class="row">
+  <div class="col">
+
+    <%=form_for @user do |f| %>
+
+    <div class="form-group">
+      <%=f.label :name %>
+      <%=f.text_field :name, class:"form-control" %>
+    </div>
+
+      <div class="form-group">
+        <%=f.label :username %>
+        <%=f.text_field :username, class:"form-control"%>
+      </div>
+
+    <div class="form-group">
+      <%=f.label :email %>
+      <%=f.email_field :email, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%=f.label :password %>
+      <%=f.password_field :password, class:"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%=f.label :password_confirmation %>
+      <%=f.password_field :password_confirmation, class:"form-control" %>
+    </div>
+
+    <%if @user.new_record? %>
+      <%=f.submit "Create Account" %>
+    <%else %>
+      <%=f.submit "Update Account" %>
+    <%end %>
+
+    <%end %>
+
+  </div>
+</div>
