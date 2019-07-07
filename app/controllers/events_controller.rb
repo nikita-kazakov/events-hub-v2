@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
 
+  before_action :require_signin, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show]
+
   def index
     @events = Event.all
   end
@@ -49,10 +52,8 @@ class EventsController < ApplicationController
 
   end
 
-  private
+private
 
-  def movie_params
-    params.require(:event).permit(:name, :location, :price, :starts_at, :description, :image_file_name, :capacity)
-  end
+
 
 end
