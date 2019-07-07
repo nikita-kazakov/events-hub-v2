@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  before_action :require_signin, except: [:new, :create]
+
+
+
   def index
     @users = User.all
   end
@@ -42,6 +46,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     flash[:notice] = "#{@user.name} was deleted"
     @user.destroy
+    session[:user_id] = nil
     redirect_to users_path
   end
 
