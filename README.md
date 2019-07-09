@@ -1,8 +1,7 @@
-# Events Go App 1.0
-Events Go is an events registration app built with Ruby on Rails 6. It allows users to see which tech events are available and add their own tech events to the database. Users can see who's going to events and can sign up themselves.
+# Events Go App 2.0
+Events Go is an events registration app built with Ruby on Rails 6. It allows users to see which tech events are available and add their own tech events to the database. Users can see who's going to events and can sign up themselves.  
 
- **There is no authentication in the 1.0 version of the app**. This app demonstrates one-to-many model relationships between events and registrations.
-
+This app features authentication without using Devise.  
 This app is meant to show Rails CRUD flexibility without using scaffolding.
 
 # Deloyed Application
