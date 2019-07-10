@@ -4,7 +4,7 @@ Events Go is an events registration app built with Ruby on Rails 6. It allows us
 This app features authentication without using Devise.  
 This app is meant to show Rails CRUD flexibility without using scaffolding.
 
-# Deloyed Application
+# Deployed Application
 
 https://events-go-v1.herokuapp.com  
 (Deployed to Heroku, please wait 10 seconds to load).
