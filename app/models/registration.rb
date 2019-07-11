@@ -1,10 +1,8 @@
 class Registration < ApplicationRecord
   belongs_to :event
+  belongs_to :user
 
   HOW_HEARD = ["Reddit", "Google", "Friend", "Meetup", "Other"]
-
-  validates :name, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
 
   validates :how_heard, inclusion: {
