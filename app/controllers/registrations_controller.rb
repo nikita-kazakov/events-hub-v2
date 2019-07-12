@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
 
+  before_action :require_signin
+
   def new
     @event = Event.find(params[:event_id])
     @registration = @event.registrations.new
@@ -15,6 +17,8 @@ class RegistrationsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @registration = @event.registrations.new(registration_params)
+    @registration.user = current_user
+
 
     if @registration.save
       redirect_to event_path(@event)
@@ -59,7 +63,7 @@ class RegistrationsController < ApplicationController
 
   private
   def registration_params
-    params.require(:registration).permit(:name, :email)
+    params.require(:registration).permit(:how_heard)
   end
 
 end
