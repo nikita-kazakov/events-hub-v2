@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @registrations = @event.registrations.all
+    @likers = @event.likers
   end
 
   def edit
