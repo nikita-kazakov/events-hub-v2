@@ -65,6 +65,7 @@
         <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary mr-2" %>
         <%= link_to "Delete", event_path, class:"btn btn-danger mr-2", method: :delete, data:{confirm:"Are you sure?"} %>
       <%end %>
+
     </div>
 
   </div>
@@ -90,3 +91,13 @@
   <%end%>
 <%end %>
 
+<h2><%=pluralize(@likers.size, 'like') %></h2>
+<%if @likers.any? %>
+  <%@likers.each do |user| %>
+    <li><%=link_to user.name, user %></li>
+  <%end %>
+<%end %>
+
+<%if current_user %>
+  <%=button_to "Like", event_likes_path(@event)%>
+<%end %>

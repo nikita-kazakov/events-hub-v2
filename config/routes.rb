@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resource :session
 
 
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :events do
     resources :registrations
+    resources :likes
   end
 
 end
