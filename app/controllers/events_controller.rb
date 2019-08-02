@@ -11,8 +11,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @registrations = @event.registrations.all
     @likers = @event.likers
-
     @current_like = current_user.likes.find_by(event_id: @event.id)
+
+    @categories = @event.categories
 
 
   end
@@ -28,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update(movie_params)
+    if @event.update(event_params)
       redirect_to event_path
       flash[:notice] = "Event Updated!"
     else
@@ -39,7 +40,7 @@ class EventsController < ApplicationController
 
   def create
     #@event = Event.new(params[:event])
-    @event = Event.new(movie_params)
+    @event = Event.new(event_params)
 
     if @event.save
       redirect_to events_path
@@ -59,6 +60,11 @@ class EventsController < ApplicationController
 
 private
 
+  def event_params
+    params.require(:event).permit(:name, :description, :location,
+                                  :price, :image_file_name, :capacity,
+                                  category_ids: [])
+  end
 
 
 end

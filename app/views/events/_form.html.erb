@@ -40,6 +40,16 @@
         <%=form.text_field :image_file_name, class:"form-control", autofocus: true %>
       </div>
 
+      <div class="form-check my-2">
+
+        <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+          <%=b.check_box(class:"form-check-input") %>
+          <%=b.label(class:"form-check-label mr-4") %>
+        <%end %>
+
+      </div>
+
+
       <%=form.submit class:"btn btn-primary" %>
     <%end %>
 
