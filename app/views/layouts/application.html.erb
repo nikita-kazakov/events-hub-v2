@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EventsRails6</title>
+    <title>EventsRails6 - <%=content_for(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +11,22 @@
 
   <body>
     <div class="container">
-      <%= render 'layouts/navbar' %>
-      <%= render 'layouts/flashnotice' %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+      <div class="row">
+        <div class="col-2">
+          <%=content_for(:side) %>
+        </div>
+        <div class="col-10">
+
+          <%= render 'layouts/navbar' %>
+          <%= render 'layouts/flashnotice' %>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+
+        </div>
+
+      </div>
+
+
     </div>
 
 

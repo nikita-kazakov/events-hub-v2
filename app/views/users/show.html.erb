@@ -25,15 +25,18 @@
   </tbody>
 </table>
 
-<p><%=@user.name%> is registered for</p>
-<%@registrations.each do |registration| %>
+<%content_for :side do %>
+  <p><%=@user.name%> is registered for</p>
+  <%@registrations.each do |registration| %>
     <p><%=link_to registration.event.name, registration.event %></p>
-<% end %>
+  <% end %>
 
-<h2>Liked Events:</h2>
+  <p>Liked Events:</p>
   <%@liked_events.each do |event| %>
     <li><%=link_to event.name, event %></li>
   <%end %>
+<% end %>
+
 
 <%if current_user?(@user)%>
   <%=link_to "Edit", edit_user_path(@user), class:"btn btn-primary mr-2" %>

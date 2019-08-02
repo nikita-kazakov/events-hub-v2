@@ -1,3 +1,4 @@
+<%content_for(:title, @event.name) %>
 
 
 <div class="row flex-column flex-md-row">
@@ -91,26 +92,43 @@
   <%end%>
 <%end %>
 
-<h2><%=pluralize(@likers.size, 'like') %></h2>
-<%if @likers.any? %>
-  <%@likers.each do |user| %>
-    <li><%=link_to user.name, user %></li>
-  <%end %>
-<%end %>
 
-<div class="container py-5">
-  <div class="row">
-    <div class="col">
-      <h1 class="mb-0 ">Categories</h1>
-      <small>Categories</small>
-      <ul class="list-group list-group-flush pt-3">
-        <%@categories.each do |category| %>
-          <li class="list-group-item"><%=category.name%></li>
-        <% end %>
-      </ul>
+
+
+
+
+<% content_for(:side) do %>
+  <h2><%=pluralize(@likers.size, 'like') %></h2>
+  <%if @likers.any? %>
+    <%@likers.each do |user| %>
+      <li><%=link_to user.name, user %></li>
+    <%end %>
+  <%end %>
+
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="mb-0 ">Categories</h1>
+        <small>Categories</small>
+        <ul class="list-group list-group-flush pt-3">
+          <%@categories.each do |category| %>
+            <li class="list-group-item"><%=category.name%></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>
+
+
+
+
+
+
+
+
 
 <%if current_user %>
 
