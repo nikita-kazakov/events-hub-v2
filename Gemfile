@@ -28,26 +28,20 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 #Faker gem to generate fake data / seeds file
-gem 'faker'
+#gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3'
 
   gem 'rspec-rails'
-  #gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
-  #gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
-  #gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
-  #gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
-  #gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
-
 end
 
-group :production do
-  gem 'pg'
-end
+#group :production do
+#  gem 'pg'
+#end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -58,8 +52,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   #both gems are for better errors.
-  gem "better_errors"
-  gem "binding_of_caller"
+  #gem "better_errors"
+  #gem "binding_of_caller"
 
 
 end

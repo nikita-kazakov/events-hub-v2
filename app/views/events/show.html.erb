@@ -99,5 +99,11 @@
 <%end %>
 
 <%if current_user %>
-  <%=button_to "Like", event_likes_path(@event)%>
+
+  <% if @current_like %>
+    <%=link_to "Unlike", event_like_path(@event), method: :delete, class:"btn btn-primary" %>
+  <%else %>
+    <%=link_to "Like", event_likes_path(@event), method: :post, class:"btn btn-primary"%>
+  <%end %>
+
 <%end %>
