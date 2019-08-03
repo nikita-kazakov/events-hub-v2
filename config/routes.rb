@@ -8,18 +8,26 @@ Rails.application.routes.draw do
 
 
   get 'signup' => 'users#new'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  #get 'events' => 'events#index'
-  #post 'events/' => 'events#create'
-  #get 'events/new' => 'events#new', as: 'new_event'
-  #get 'events/:id/edit' => 'events#edit', as:'edit_event'
-  #get 'events/:id' => 'events#show', as:'event'
-  #patch 'events/:id' => 'events#update'
+
+
+  #Passing routes manually with scope parameter
+  #get "events/past" => "events#index", scope: "past"
+  #get "events/free" => "events#index", scope: "free"
+
+  #Passing routes manually but with a block. Better.
+  # ["past", "free"].each do |scope|
+  #     get "events/#{scope}" => "events#index", scope: scope
+  # end
+
+  get "events/filter/:scope" => "events#index", as: :filtered_events
+
   root 'events#index'
   resources :events do
     resources :registrations
     resources :likes
   end
+
+
 
 end

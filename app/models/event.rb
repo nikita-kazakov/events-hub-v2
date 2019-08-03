@@ -7,6 +7,11 @@ class Event < ApplicationRecord
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
 
+  #Lambda. Query code is evaluated each time.
+  scope :past, -> {where('starts_at < ?', Time.now).order(:starts_at)}
+  scope :upcoming, -> {where('starts_at > ?', Time.now).order(:starts_at)}
+  scope :free, -> {where(price: 0).order(:name)}
+  scope :recent, ->(max=1) {past.limit(max)}
 
   validates :name, :location, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0}, presence: true
