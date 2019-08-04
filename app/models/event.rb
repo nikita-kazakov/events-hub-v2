@@ -17,6 +17,11 @@ class Event < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 0}, presence: true
   validates :description, length: {minimum: 20}
 
+  #To Param is used to make friendly URLS for this Event Model.
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
 
   def free?
     price.blank? || price.zero?
