@@ -3,6 +3,11 @@ class EventsController < ApplicationController
   before_action :require_signin, except: [:index, :show]
   before_action :require_admin, except: [:index, :show]
 
+  def css
+
+  end
+
+
   def index
 
     case params[:scope]
@@ -23,7 +28,6 @@ class EventsController < ApplicationController
     @current_like = current_user.likes.find_by(event_id: @event.id)
 
     @categories = @event.categories
-
 
   end
 

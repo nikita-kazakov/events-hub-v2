@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # end
 
   get "events/filter/:scope" => "events#index", as: :filtered_events
+  get "/css" => 'events#css'
 
   root 'events#index'
   resources :events do
