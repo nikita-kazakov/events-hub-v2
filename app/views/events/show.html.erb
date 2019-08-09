@@ -1,9 +1,12 @@
+
 <%content_for(:title, @event.name) %>
 
 
-<div class="row flex-column flex-md-row">
 
-  <div class="col">
+<div class="container">
+<div class="row d-flex">
+
+  <div class="col-sm-12 col-md">
     <%= image_tag(@event.image_file_name, class: "card-img-top")%>
   </div>
 
@@ -139,3 +142,4 @@
   <%end %>
 
 <%end %>
+</div>

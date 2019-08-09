@@ -1,23 +1,22 @@
-  <nav class="navbar bg-light navbar-expand-md py-md-2">
-    <a class="navbar-brand font-weight-bolder" href="<%=root_path %>">EVENT GO</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <%if current_user_admin? %>
-          <li class="nav-item py-md-2"><%= link_to "Add Event", new_event_path, class:"nav-link" %></li>
-        <%end %>
-        <li class="nav-item py-md-2"><%= link_to "All Users", users_path, class:"nav-link" %></li>
+<div class="container">
+  <nav class="row d-flex my-3 justify-content-between">
+    <a href="<%=root_path %>" class="logo text-decoration-none">EventRite</a>
+    <div class="nav-buttons d-flex">
+      <%if current_user_admin? %>
+        <%= link_to "Add Event", new_event_path, class:"p-2 text-decoration-none" %>
+      <%end %>
+      <%= link_to "All Users", users_path, class:"p-2 text-decoration-none" %>
+      <a class="p-2 text-decoration-none" href="#">Browse Events</a>
+      <a class="p-2 text-decoration-none" href="#">Create Event</a>
 
-        <%if current_user %>
-          <li class="nav-item py-md-2"><%= link_to current_user.name, current_user, class:"nav-link" %></li>
-          <li class="nav-item py-md-2"><%= link_to "Sign Out", session_path, method: :delete, class:"nav-link" %></li>
-          <%else %>
-          <li class="nav-item py-md-2 pl-5"><%= link_to "Sign Up", signup_path, class:"nav-link" %></li>
-          <li class="nav-item py-md-2"><%= link_to "Sign In", new_session_path, class:"nav-link" %></li>
-        <%end %>
+      <%if current_user %>
+        <%= link_to "My Profile", current_user, class:"p-2 text-decoration-none" %>
+        <%= link_to "Sign Out", session_path, method: :delete, class:"p-2 text-decoration-none" %>
+      <%else %>
+        <%= link_to "Sign Up", signup_path, class:"p-2 text-decoration-none" %>
+        <%= link_to "Sign In", new_session_path, class:"p-2 text-decoration-none" %>
+      <%end %>
 
-      </ul>
     </div>
   </nav>
+</div>

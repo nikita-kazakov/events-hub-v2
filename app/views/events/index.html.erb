@@ -1,20 +1,28 @@
- <div class="row">
+<div class="container">
+<div class="row">
+  <%@events.each do |event| %>
+  <div class="event-wrap col-4 mb-5 pt-2">
+    <%= image_tag(event.image_file_name, class: "event-image img-fluid rounded")%>
+    <div class="bottom-wrapper p-3 d-flex">
+      <div class="date-wrap mr-2">
+        <div class="month text-muted"><%=format_date_month(event)%></div>
+        <div class="date text-muted"><%=format_date_day(event) %></div>
+      </div>
 
-    <%@events.each do |event| %>
-
-    <div class="d-flex flex-column col-lg-4 mb-5">
-        <%= image_tag(event.image_file_name, class: "card-img-top")%>
-        <div class="d-flex justify-content-between">
-          <%=link_to event.name, event_path(event), class:"h2 text-decoration-none" %>
-          <h3><span class="badge badge-info"><%=price_view(event) %></span></h3>
+      <div class="text-wrap">
+        <%=link_to event.name, event_path(event), class:"h5 text-decoration-none" %>
+        <p class="text-muted"><%=event.description %></p>
+        <div class="small"><%=format_date(event)%> at <%=format_time(event)%></div>
+        <div class="small"><%=event.location%></div>
+        <div class="price mt-2 d-flex">
+          <span class="badge-primary p-1 rounded ">$15</span>
+          <i class="material-icons align-self-center heart-icon ml-2">favorite</i>
         </div>
-
-        <p class="mb-auto"><%=event.description %></p>
-        <small class="text-muted">In <%=event.location %> on <%=format_date(event)%> at <%=format_time(event)%></small>
-        <small class="text-muted"><%=event.spots_left %> spots remaining</small>
-
+      </div>
     </div>
-
-    <%end %>
-
   </div>
+  <%end %>
+
+
+</div>
+</div>

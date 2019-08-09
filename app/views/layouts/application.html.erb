@@ -5,35 +5,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!--Google Material Icons Imported As Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-2">
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flashnotice' %>
+    <%= render 'layouts/footer' %>
 
-          <li><%=link_to "Past Events", filtered_events_path(:past) %></li>
-          <li><%=link_to "Free Events", filtered_events_path(:free) %></li>
-          <li><%=link_to "Upcoming Events", filtered_events_path(:upcoming) %></li>
+    <%= yield %>
 
-          <%=content_for(:side) %>
-        </div>
-        <div class="col-10">
 
-          <%= render 'layouts/navbar' %>
-          <%= render 'layouts/flashnotice' %>
-          <%= yield %>
-          <%= render 'layouts/footer' %>
+    <div class="row">
+      <div class="col">
 
-        </div>
+        <li><%=link_to "Past Events", filtered_events_path(:past) %></li>
+        <li><%=link_to "Free Events", filtered_events_path(:free) %></li>
+        <li><%=link_to "Upcoming Events", filtered_events_path(:upcoming) %></li>
 
+        <%=content_for(:side) %>
       </div>
-
-
     </div>
-
-
   </body>
 </html>

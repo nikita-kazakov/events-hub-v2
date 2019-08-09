@@ -1,0 +1,36 @@
+$color-orange: #f05537;
+$color-text-grey: #39364f;
+
+.logo{
+  color: $color-orange;
+  font-size: 28px;
+
+}
+
+.nav-buttons a{
+  color: $color-text-grey;
+}
+
+.event-wrap{
+  transition: ease 1s;
+  &:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+  }
+}
+
+.event-image{
+  max-width: 100%;
+  height: auto;
+}
+
+.heart-icon{
+  font-size: 30px;
+  color: indianred;
+  transition: 0.5s ease;
+
+  &:hover{
+    color: green;
+  }
+}
