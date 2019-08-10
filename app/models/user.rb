@@ -17,4 +17,6 @@ class User < ApplicationRecord
     user && user.authenticate(password)
   end
 
+
+
 end

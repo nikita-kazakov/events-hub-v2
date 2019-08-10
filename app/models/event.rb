@@ -39,4 +39,6 @@ class Event < ApplicationRecord
     registrations.any?
   end
 
+
+
 end

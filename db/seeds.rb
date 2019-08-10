@@ -53,15 +53,16 @@ Event.create!(
     capacity: 9
 )
 
-Registration.create!(name: "Jack Bloom", email: "jack@bloom.com", how_heard: "Reddit", event_id: 1)
-Registration.create!(name: "Lauren Self", email: "lauren@outlook.com", how_heard: "Google", event_id: 1)
-Registration.create!(name: "Sue Mellon", email: "sure_mellon@bloom.com", how_heard: "Google", event_id: 1)
+User.create!(
+    name: "Jim",
+    username: "Jim",
+    email: "jim@go.com",
+    password: "secret"
+)
 
-Registration.create!(name: "Jake Sive", email: "jake@outlook.com", how_heard: "Reddit", event_id: 2)
-Registration.create!(name: "Sun Noon ", email: "sun@outlook.com", how_heard: "Google", event_id: 2)
-Registration.create!(name: "Edge Sooner ", email: "edge@outlook.com", how_heard: "Reddit", event_id: 2)
-
-Registration.create!(name: "Corazon Hemhill", email: "corazon@outlook.com", how_heard: "Reddit", event_id: 3)
-Registration.create!(name: "Bernie Koch ", email: "bernie@outlook.com", how_heard: "Reddit", event_id: 3)
-Registration.create!(name: "Eric Stevenson ", email: "edge@outlook.com", how_heard: "Google", event_id: 3)
-Registration.create!(name: "Jonie Stuffel ", email: "joanie@outlook.com", how_heard: "Reddit", event_id: 3)
+User.create!(
+    name: "Bob",
+    username: "Bob",
+    email: "bob@go.com",
+    password: "secret"
+)

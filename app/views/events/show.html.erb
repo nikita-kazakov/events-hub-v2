@@ -1,145 +1,119 @@
 
 <%content_for(:title, @event.name) %>
 
-
-
 <div class="container">
-<div class="row d-flex">
+  <div class="row">
 
-  <div class="col-sm-12 col-md">
-    <%= image_tag(@event.image_file_name, class: "card-img-top")%>
-  </div>
+    <div class="col-md-12 col-lg">
+      <%= image_tag(@event.image_file_name, class: "card-img-top")%>
+    </div>
+    <div class="col">
 
-  <div class="col">
+      <table class="table table-striped">
+        <thead>
+        <tr>
 
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Label</th>
-        <th scope="col">Value</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">Name</th>
-        <td><%=@event.name %></td>
-      </tr>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Name</th>
+          <td><%=@event.name %></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Description</th>
-        <td><%=@event.description %></td>
-      </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td><%=@event.description %></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Location</th>
-        <td><%=@event.location %></td>
-      </tr>
+        <tr>
+          <th scope="row">Location</th>
+          <td><%=@event.location %></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Price</th>
-        <td><%=price_view(@event) %></td>
-      </tr>
+        <tr>
+          <th scope="row">Price</th>
+          <td><%=price_view(@event) %></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Date</th>
-        <td><%= format_date(@event)%></td>
-      </tr>
+        <tr>
+          <th scope="row">Date</th>
+          <td><%= format_date(@event)%></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Time</th>
-        <td><%= format_time(@event)%></td>
-      </tr>
+        <tr>
+          <th scope="row">Time</th>
+          <td><%= format_time(@event)%></td>
+        </tr>
 
-      <tr>
-        <th scope="row">Seats Remaining</th>
-        <td><%= @event.spots_left %></td>
-      </tr>
+        <tr>
+          <th scope="row">Seats Remaining</th>
+          <td><%= @event.spots_left %></td>
+        </tr>
 
 
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
 
-    <div class="d-flex">
+      <div class="d-flex">
+        <%if current_user %>
+          <%=register_for(@event) %>
+        <%end %>
+
+        <%if current_user && current_user.admin? %>
+          <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary mr-2" %>
+          <%= link_to "Delete", event_path, class:"btn btn-danger mr-2", method: :delete, data:{confirm:"Are you sure?"} %>
+        <%end %>
+
+        <%if current_user %>
+          <% if current_user.likes.find_by(event_id: @event.id) %>
+            <%=link_to "Unlike", event_like_path(@event), method: :delete, class:"btn btn-primary" %>
+          <%else %>
+            <%=link_to "Like", event_likes_path(@event), method: :post, class:"btn btn-primary"%>
+          <%end %>
+        <%end %>
+
+      </div>
+
+    </div>
+    <div class="col-sm-12 col-lg-2">
+
       <%if current_user %>
-        <%=register_for(@event) %>
+        <%if @event.anyone_registered %>
+          <div class="row flex-column">
+            <h2 class="h4">Attendees (4)</h2>
+            <div class="attendees">
+
+              <%@registrations.each do |registration| %>
+                <p class="mb-1"><%=link_to registration.user.name, registration.user %> signed up <%=time_ago_in_words(registration.created_at)%> ago. </p>
+              <% end %>
+
+              <p>Bill signed up 2 days ago</p>
+            </div>
+
+          </div>
+        <%end %>
       <%end %>
 
-      <%if current_user && current_user.admin? %>
-        <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary mr-2" %>
-        <%= link_to "Delete", event_path, class:"btn btn-danger mr-2", method: :delete, data:{confirm:"Are you sure?"} %>
+
+      <%if @likers.any? %>
+        <div class="row flex-column">
+          <h2 class="h4">Liked By:</h2>
+          <div class="attendees">
+
+            <%@likers.each do |liker| %>
+              <p class="mb-1"><%=link_to liker.name, liker%> </p>
+            <% end %>
+          </div>
+        </div>
       <%end %>
 
+
+
+
+
     </div>
 
   </div>
-</div>
-
-<%if current_user %>
-  <%if @event.anyone_registered %>
-  <div class="container py-5">
-    <div class="row">
-      <div class="col">
-        <h1 class="mb-0 ">Attendees</h1>
-        <small><%= link_to "All Registrations", event_registrations_path(@event)%></small>
-        <ul class="list-group list-group-flush pt-3">
-        <%@registrations.each do |registration| %>
-            <li class="list-group-item"><%=link_to registration.user.name, registration.user %>
-                                        <%=time_ago_in_words(registration.created_at)%> ago
-                                        (<%=registration.how_heard %>) </li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <%end%>
-<%end %>
-
-
-
-
-
-
-<% content_for(:side) do %>
-  <h2><%=pluralize(@likers.size, 'like') %></h2>
-  <%if @likers.any? %>
-    <%@likers.each do |user| %>
-      <li><%=link_to user.name, user %></li>
-    <%end %>
-  <%end %>
-
-
-  <div class="container py-5">
-    <div class="row">
-      <div class="col">
-        <h1 class="mb-0 ">Categories</h1>
-        <small>Categories</small>
-        <ul class="list-group list-group-flush pt-3">
-          <%@categories.each do |category| %>
-            <li class="list-group-item"><%=category.name%></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-
-
-
-
-
-
-
-
-
-<%if current_user %>
-
-  <% if @current_like %>
-    <%=link_to "Unlike", event_like_path(@event), method: :delete, class:"btn btn-primary" %>
-  <%else %>
-    <%=link_to "Like", event_likes_path(@event), method: :post, class:"btn btn-primary"%>
-  <%end %>
-
-<%end %>
 </div>
