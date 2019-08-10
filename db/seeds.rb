@@ -66,3 +66,19 @@ User.create!(
     email: "bob@go.com",
     password: "secret"
 )
+
+
+10.times.each do
+  Like.create!(
+      user_id: User.all.sample.id,
+      event_id: Event.all.sample.id
+  )
+end
+
+10.times.each do
+  Registration.create!(
+      user_id: User.all.sample.id,
+      event_id: Event.all.sample.id,
+      how_heard: "Reddit"
+  )
+end
