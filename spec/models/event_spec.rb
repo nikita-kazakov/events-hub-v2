@@ -72,8 +72,4 @@ describe 'An Event' do
   end
 
 
-
-
-
-
 end

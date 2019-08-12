@@ -2,43 +2,38 @@ require 'rails_helper'
 
 describe 'Viewing list of events' do
 
+  before(:each) do
+    @event1 = Event.create(name:"Named Thing",
+                       location:"Denver, CO",
+                       price: 50,
+                       description: "this event is glorious because we are putting it on for all people to watch.",
+                       capacity: 10,
+                       starts_at: Time.now
+
+    )
+
+    @event2 = Event.create(name:"Go Here",
+                           location:"Pueblo, CO",
+                           price: 22,
+                           description: "Fantastic because we are putting it on for all people to watch.",
+                           capacity: 3,
+                           starts_at: Time.now
+                           )
+
+
+  end
+
   it 'shows events' do
 
-    event1 = Event.create(
-        name: "Derailed",
-        location: "Colorado Springs, CO",
-        price: 20,
-        description: "Denver based polyglot developer group. We've been around a long time and have a great group of folks willing to explore new avenues and help people of all backgrounds. ",
-        image_file_name: "katacamp.jpg",
-        starts_at: Time.now,
-        capacity: 9
-    )
-
-    event2 = Event.create(
-        name: "Javacamp",
-        location: "Colorado Springs, CO",
-        price: 15,
-        description: "Javacamp description",
-        image_file_name: "go.jpg",
-        starts_at: Time.now,
-        capacity: 10
-    )
-
     visit events_url
-    expect(page).to have_text(event1.name)
-    expect(page).to have_text(event1.location)
-    expect(page).to have_text(event2.name)
-    expect(page).to have_text("20")
+    expect(page).to have_text(@event1.name)
+    expect(page).to have_text(@event2.name)
+
+    expect(page).to have_text(@event1.description)
+    expect(page).to have_text(@event2.description)
 
 
   end
 
-  it 'should display location' do
-    event1 = Event.create(event_attributes(location: "Denver"))
-
-    visit events_url
-    expect(page).to have_text("In Denver")
-    
-  end
 
 end
