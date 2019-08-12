@@ -82,13 +82,14 @@
       <%if current_user %>
         <%if @event.anyone_registered %>
           <div class="row flex-column">
-            <h2 class="h5">Attendees (4)</h2>
-            <div class="attendees">
 
-              <%@registrations.each do |registration| %>
-                <p class="mb-1"><%=link_to registration.user.name, registration.user %> (<%=time_ago_in_words(registration.created_at)%> ago) </p>
-              <% end %>
-            </div>
+            <h2 class="h5">Attendees (<%=@registrations.count %>)</h2>
+            <%@registrations.each do |registration| %>
+              <div class="d-flex">
+                <i class="material-icons mr-1">person</i>
+                <p class="mb-1"><%=link_to registration.user.name, registration.user %></p>
+              </div>
+            <%end %>
 
           </div>
         <%end %>
@@ -97,13 +98,14 @@
 
       <%if @likers.any? %>
         <div class="row flex-column mt-3">
-          <h2 class="h5">Liked By:</h2>
-          <div class="attendees">
+          <h2 class="h5">Likes</h2>
+          <%@likers.each do |liker| %>
+            <div class="d-flex">
+              <i class="material-icons mr-1">favorite</i>
+              <p class="mb-1"><%=link_to liker.name, liker%></p>
+            </div>
+          <%end %>
 
-            <%@likers.each do |liker| %>
-              <p class="mb-1"><%=link_to liker.name, liker%> </p>
-            <% end %>
-          </div>
         </div>
       <%end %>
 

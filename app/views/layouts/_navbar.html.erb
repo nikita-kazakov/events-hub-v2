@@ -1,21 +1,28 @@
 <div class="container">
-  <nav class="row d-flex my-3 justify-content-between">
-    <a href="<%=root_path %>" class="logo text-decoration-none">EventRite</a>
-    <div class="nav-buttons d-flex">
-      <%= link_to "Browse Events", events_path, class:"p-2 text-decoration-none" %>
-      <%if current_user_admin? %>
-        <%= link_to "Create Event", new_event_path, class:"p-2 text-decoration-none" %>
-      <%end %>
-      <%= link_to "All Users", users_path, class:"p-2 text-decoration-none" %>
+  <nav class="row d-flex">
 
-      <%if current_user %>
-        <%= link_to "My Profile", current_user, class:"p-2 text-decoration-none" %>
-        <%= link_to "Sign Out", session_path, method: :delete, class:"p-2 text-decoration-none" %>
-      <%else %>
-        <%= link_to "Sign Up", signup_path, class:"p-2 text-decoration-none" %>
-        <%= link_to "Sign In", new_session_path, class:"p-2 text-decoration-none" %>
-      <%end %>
-
+    <div class="col-12 col-md d-flex justify-content-center justify-content-md-start ">
+      <a href="<%=root_path %>" class="logo text-decoration-none align-self-center">Events Hub</a>
     </div>
+
+    <div class="col d-flex my-3 justify-content-center justify-content-md-end ">
+      <div class="nav-buttons d-flex">
+        <%= link_to "Browse Events", events_path, class:"p-2 text-decoration-none" %>
+        <%if current_user_admin? %>
+          <%= link_to "Create Event", new_event_path, class:"p-2 text-decoration-none" %>
+          <%= link_to "All Users", users_path, class:"p-2 text-decoration-none" %>
+        <%end %>
+
+
+        <%if current_user %>
+          <%= link_to "My Profile", current_user, class:"p-2 text-decoration-none" %>
+          <%= link_to "Sign Out", session_path, method: :delete, class:"p-2 text-decoration-none" %>
+        <%else %>
+          <%= link_to "Sign Up", signup_path, class:"p-2 text-decoration-none" %>
+          <%= link_to "Sign In", new_session_path, class:"p-2 text-decoration-none" %>
+        <%end %>
+      </div>
+    </div>
+
   </nav>
 </div>

@@ -1,28 +1,35 @@
 <div class="container">
-<div class="row">
-  <%@events.each do |event| %>
-  <div class="event-wrap col-4 mb-5 pt-2">
-    <%= image_tag(event.image_file_name, class: "event-image img-fluid rounded")%>
-    <div class="bottom-wrapper p-3 d-flex">
-      <div class="date-wrap mr-2">
-        <div class="month text-muted"><%=format_date_month(event)%></div>
-        <div class="date text-muted"><%=format_date_day(event) %></div>
-      </div>
 
-      <div class="text-wrap">
-        <%=link_to event.name, event_path(event), class:"h5 text-decoration-none" %>
-        <p class="text-muted"><%=event.description %></p>
-        <div class="small"><%=format_date(event)%> at <%=format_time(event)%></div>
-        <div class="small"><%=event.location%></div>
-        <div class="price mt-2 d-flex">
-          <span class="badge-primary p-1 rounded ">$15</span>
-          <i class="material-icons align-self-center heart-icon ml-2">favorite</i>
+  <div class="row d-flex justify-content-center justify-content-md-end">
+    <%=link_to "Past", filtered_events_path(:past), class:"btn btn-outline-secondary mr-2" %>
+    <%=link_to "Free", filtered_events_path(:free), class:"btn btn-outline-secondary mr-2" %>
+    <%=link_to "Upcoming", filtered_events_path(:past), class:"btn btn-outline-secondary mr-2" %>
+  </div>
+
+  <div class="row">
+  <%@events.each do |event| %>
+      <div class="event-wrap col-md-6 col-lg-4 mb-5 pt-2">
+        <a href="<%=event_path(event) %>"><%= image_tag(event.image_file_name, class: "event-image img-fluid rounded")%></a>
+        <div class="bottom-wrapper p-3 d-flex">
+          <div class="date-wrap mr-2">
+            <div class="month text-muted"><%=format_date_month(event)%></div>
+            <div class="date text-muted"><%=format_date_day(event) %></div>
+          </div>
+
+          <div class="text-wrap">
+            <%=link_to event.name, event_path(event), class:"h5 text-decoration-none" %>
+            <p class="text-muted"><%=event.description %></p>
+            <div class="small"><%=format_date(event)%> at <%=format_time(event)%></div>
+            <div class="small"><%=event.location%></div>
+            <div class="price mt-2 d-flex">
+              <span class="badge-primary p-1 rounded "><%=number_to_currency(event.price, precision:0) %></span>
+              <i class="material-icons align-self-center heart-icon ml-2">favorite</i>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <%end %>
   </div>
-  <%end %>
 
 
-</div>
 </div>

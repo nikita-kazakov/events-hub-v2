@@ -19,16 +19,5 @@
 
     <%= yield %>
 
-
-    <div class="row">
-      <div class="col">
-
-        <li><%=link_to "Past Events", filtered_events_path(:past) %></li>
-        <li><%=link_to "Free Events", filtered_events_path(:free) %></li>
-        <li><%=link_to "Upcoming Events", filtered_events_path(:upcoming) %></li>
-
-        <%=content_for(:side) %>
-      </div>
-    </div>
   </body>
 </html>
