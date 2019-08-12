@@ -12,3 +12,4 @@ def event_attributes(overrides={})
       capacity: 9
   }.merge(overrides)
 end
+
