@@ -9,7 +9,9 @@ module EventsHelper
   end
 
   def register_for(event)
-    if event.sold_out
+    if event.registrations.where(user: current_user).exists?
+      link_to("Unregister", event_registration_path(event), method: :delete, class:"text-white btn btn-secondary mr-2")
+    elsif event.sold_out
       content_tag(:a, "Sold Out", class:"text-white btn btn-secondary mr-2")
     else
       link_to "Register", new_event_registration_path(@event), class:"btn btn-primary mr-2"

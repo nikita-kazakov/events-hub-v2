@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md">
-      <h1><%=@user.name %>'s Profile</h1>
+      <h1 class="h3"><%=@user.name %>'s Profile</h1>
       <table class="table table-striped">
         <tbody>
         <tr>
@@ -30,24 +30,27 @@
 
       <%content_for :side do %>
 
-        <h2 class="h5">Registrations</h2>
-
-        <%@registrations.each do |registration| %>
-          <div class="d-flex">
-            <i class="material-icons mr-1">calendar_today</i>
-            <p><%=link_to registration.event.name, registration.event %></p>
-          </div>
-        <% end %>
-
-        <h2 class="h5">Liked Events</h2>
-        <%@liked_events.each do |event| %>
-          <div class="d-flex">
-            <i class="material-icons mr-1">favorite</i>
-            <p><%=link_to event.name, event %></p>
-          </div>
-
-
+        <%if @registrations.any? %>
+          <h2 class="h5">Registrations</h2>
+          <%@registrations.each do |registration| %>
+            <div class="d-flex">
+              <i class="material-icons mr-1">calendar_today</i>
+              <p><%=link_to registration.event.name, registration.event %></p>
+            </div>
+          <% end %>
         <%end %>
+
+        <%if @liked_events.any? %>
+          <h2 class="h5">Liked Events</h2>
+          <%@liked_events.each do |event| %>
+            <div class="d-flex">
+              <i class="material-icons mr-1">favorite</i>
+              <p><%=link_to event.name, event %></p>
+            </div>
+          <%end %>
+        <%end %>
+
+
       <% end %>
 
 
@@ -57,6 +60,6 @@
       <%end %>
 
     </div>
-    <div class="col-sm-12 col-md-3"><%=content_for(:side) %></div>
+    <div class="col-sm-12 col-md-3 mt-3 mt-lg-0"><%=content_for(:side) %></div>
   </div>
 </div>

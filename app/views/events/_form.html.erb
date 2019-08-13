@@ -4,8 +4,8 @@
 
 <div class="container">
   <div class="row">
-    <%=render 'shared/errors', object: @event%>
     <div class="col">
+      <%=render 'shared/errors', object: @event%>
       <%= form_for(@event) do |form|%>
         <div class="form-group">
           <%=form.label :name %>

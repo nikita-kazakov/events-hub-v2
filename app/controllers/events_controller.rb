@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     when "free"
       @events = Event.free
     else
-      @events = Event.all
+      @events = Event.upcoming
     end
 
   end

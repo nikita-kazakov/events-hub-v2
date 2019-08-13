@@ -53,30 +53,26 @@ Event.create!(
     capacity: 9
 )
 
-User.create!(
-    name: "Jim",
-    username: "Jim",
-    email: "jim@go.com",
-    password: "secret"
-)
-
-User.create!(
-    name: "Bob",
-    username: "Bob",
-    email: "bob@go.com",
-    password: "secret"
-)
+User.create!(name: "Jim", username: "jim", email: "jim@go.com", password: "secret")
+User.create!(name: "Bob", username: "bob", email: "bob@go.com", password: "secret")
+User.create!(name: "Susan", username: "susan", email: "susan@go.com", password: "secret")
+User.create!(name: "Jill", username: "Jill", email: "jill@go.com", password: "secret")
+User.create!(name: "Bill", username: "Bill", email: "bill@go.com", password: "secret")
+User.create!(name: "Ada", username: "ada", email: "ada@go.com", password: "secret")
+User.create!(name: "Phylis", username: "phylis", email: "phylis@go.com", password: "secret")
+User.create!(name: "Myung", username: "myung", email: "myung@go.com", password: "secret")
+User.create!(name: "Rosa", username: "rosa", email: "rosa@go.com", password: "secret")
 
 
-10.times.each do
-  Like.create!(
+30.times.each do
+  Like.create(
       user_id: User.all.sample.id,
       event_id: Event.all.sample.id
   )
 end
 
-10.times.each do
-  Registration.create!(
+30.times.each do
+  Registration.create(
       user_id: User.all.sample.id,
       event_id: Event.all.sample.id,
       how_heard: "Reddit"

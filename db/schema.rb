@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_214116) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "starts_at"
     t.text "description"
-    t.string "image_file_name", default: "placeholder.png"
+    t.string "image_file_name", default: "placeholder.jpg"
     t.integer "capacity"
     t.string "slug"
   end

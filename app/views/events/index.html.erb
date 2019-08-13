@@ -22,8 +22,7 @@
             <div class="small"><%=format_date(event)%> at <%=format_time(event)%></div>
             <div class="small"><%=event.location%></div>
             <div class="price mt-2 d-flex">
-              <span class="badge-primary p-1 rounded "><%=number_to_currency(event.price, precision:0) %></span>
-              <i class="material-icons align-self-center heart-icon ml-2">favorite</i>
+              <span class="badge-primary p-1 rounded "><%=price_view(event)%></span>
             </div>
           </div>
         </div>
