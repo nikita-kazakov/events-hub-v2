@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.3.6'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dokku-cli'
+gem 'pg'
 
 #Faker gem to generate fake data / seeds file
 #gem 'faker'
@@ -35,13 +36,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-
   gem 'rspec-rails'
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :development do

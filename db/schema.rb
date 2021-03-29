@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_08_03_214116) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -19,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_08_03_214116) do
   end
 
   create_table "categorizations", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_categorizations_on_category_id"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 2019_08_03_214116) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "event_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_likes_on_event_id"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_214116) do
 
   create_table "registrations", force: :cascade do |t|
     t.string "how_heard"
-    t.integer "event_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
