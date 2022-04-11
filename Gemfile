@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.1', '>= 5.1.1'
   gem 'pry-byebug', '~> 3.8'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'faraday', '~> 2.2'   # For creating EventsBright API Connection
 end
 
 group :development do
